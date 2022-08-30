@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./DB/connect');
-const blogs = require('./route/task');
+const Blog = require('./route/task');
 require('dotenv').config(); // to have the env variables
 const app = express();
 const PORT = 8080;
@@ -9,8 +9,8 @@ const PORT = 8080;
 app.get('/hi', (req,res)=>{
     res.send('<h1> hello </h1>')
 })
-
-app.use('blog/api/',blogs);
+app.use(express.json())
+app.use('/blogweb/api',Blog);
 
 const start  = async ()=>{
     try{
@@ -24,6 +24,8 @@ const start  = async ()=>{
 }
 
 start()
+
+
 
 
 
